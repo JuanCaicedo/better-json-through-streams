@@ -1,0 +1,23 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.data {
+  border: 1px solid black;
+  font: 24px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+.sets {
+  border: 1px solid red;
+  font: 24px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+.cards {
+  border: 1px solid blue;
+  font: 24px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
