@@ -18,9 +18,9 @@ router.get('/home', function(req, res) {
 });
 
 router.get('/data', function(req, res) {
-  var filePath = path.resolve(__dirname, '../all-cards.json');
+  var filePath = path.resolve(__dirname, '../points.json');
   var readStream = fs.createReadStream(filePath);
-  readStream.pipe(res)
+  readStream.pipe(res);
   // res.write('[')
   // oboe(readStream)
   //   .node('!.{}', function(item){
