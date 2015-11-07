@@ -14,9 +14,9 @@ function getCell(x, y) {
 $(document).ready(function() {
   //   var ctx = {};
   oboe('http://localhost:3000/data')
-    .node('{x y}', function(point){
+    .node('{x y color}', function(point){
       var cell = getCell(point.x, point.y);
-      $(cell).addClass('orange');
+      $(cell).addClass(point.color);
     })
     //     .node('{cards}', function(item) {
     //       count += 1;

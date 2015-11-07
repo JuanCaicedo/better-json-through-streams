@@ -1,6 +1,55 @@
 {
   "points": [{
-    "x": 1,
-    "y": 1
+    "x": 0,
+    "y": 0,
+    "color":"orange"
+  },{
+    "x": 0,
+    "y": 1,
+    "color":"orange"
+  },{
+    "x": 0,
+    "y": 2,
+    "color":"orange"
+  },{
+    "x": 0,
+    "y": 3,
+    "color":"orange"
+  },{
+    "x": 0,
+    "y": 4,
+    "color":"orange"
+  },{
+    "x": 0,
+    "y": 5,
+    "color":"orange"
+  },{
+    "x": 0,
+    "y": 9,
+    "color":"orange"
+  },{
+    "x": 0,
+    "y": 10,
+    "color":"orange"
+  },{
+    "x": 0,
+    "y": 11,
+    "color":"orange"
+  },{
+    "x": 0,
+    "y": 12,
+    "color":"orange"
+  },{
+    "x": 0,
+    "y": 21,
+    "color":"orange"
+  },{
+    "x": 0,
+    "y": 22,
+    "color":"orange"
+  },{
+    "x": 0,
+    "y": 23,
+    "color":"orange"
   }]
 }
