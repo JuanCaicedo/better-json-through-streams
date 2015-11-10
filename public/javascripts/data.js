@@ -16,5 +16,6 @@ oboe('http://localhost:3000/data')
     cell.classList.add(point.color);
   })
   .done(function(){
-    document.querySelector('#status-message').textContent = 'All data Loaded!';
+    var element = document.querySelector('#status-message');
+    element.textContent = 'All data Loaded!';
   });
