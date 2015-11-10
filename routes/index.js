@@ -21,15 +21,6 @@ router.get('/data', function(req, res) {
   var filePath = path.resolve(__dirname, '../points.json');
   var readStream = fs.createReadStream(filePath);
   readStream.pipe(res);
-  // res.write('[')
-  // oboe(readStream)
-  //   .node('!.{}', function(item){
-  //     res.write(JSON.stringify(item));
-  //   })
-  //   .done(function(full){
-  //     res.write(']');
-  //     res.end();
-  //   });
 });
 
 module.exports = router;
