@@ -35,7 +35,37 @@ router.get('/data', function(req, res) {
   var json = JSON.stringify(response);
   var parts = json.split('#{pixels}');
 
-  highland(parts)
+  var point1 = {
+    "index": 105,
+    "action": "draw",
+    "x": 9,
+    "y": 7,
+    "originalColor": "transparent",
+    "color": "orange",
+    "size": 1,
+    "drawPathId": 1446859159445
+  };
+
+  var point2 = {
+    "index": 105,
+    "action": "draw",
+    "x": 9,
+    "y": 7,
+    "originalColor": "transparent",
+    "color": "orange",
+    "size": 1,
+    "drawPathId": 1446859159445
+  };
+
+
+  var pointStream = highland([point1, point2])
+        .map(point => JSON.stringify(point));
+
+  highland([
+      parts[0],
+      pointStream,
+      parts[1]
+    ])
     .invoke('split', [''])
     .sequence()
     .pipe(res);
