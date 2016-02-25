@@ -6,6 +6,8 @@ var request = require('request');
 var highland = require('highland');
 var _ = require('lodash');
 
+var points = require('../data/points');
+
 var router = express.Router();
 
 /* GET home page. */
@@ -35,30 +37,7 @@ router.get('/data', function(req, res) {
   var json = JSON.stringify(response);
   var parts = json.split('#{pixels}');
 
-  var point1 = {
-    "index": 105,
-    "action": "draw",
-    "x": 9,
-    "y": 7,
-    "originalColor": "transparent",
-    "color": "orange",
-    "size": 1,
-    "drawPathId": 1446859159445
-  };
-
-  var point2 = {
-    "index": 105,
-    "action": "draw",
-    "x": 9,
-    "y": 7,
-    "originalColor": "transparent",
-    "color": "orange",
-    "size": 1,
-    "drawPathId": 1446859159445
-  };
-
-
-  var pointStream = highland([point1, point2])
+  var pointStream = points.getStream()
         .map(point => JSON.stringify(point));
 
   highland([
