@@ -29,16 +29,17 @@ router.get('/data', function(req, res) {
       dateTimeOriginal: '2015-11-07T00:24:05.776Z'
     },
     pixif: {
-      pixels: '#{pixels}'
+      pixels: ["#{pixels}"]
     },
     end: 'test'
   };
 
   var json = JSON.stringify(response);
-  var parts = json.split('#{pixels}');
+  var parts = json.split('"#{pixels}"');
 
   var pointStream = points.getStream()
-        .map(point => JSON.stringify(point));
+        .map(point => JSON.stringify(point))
+        .intersperse(',');
 
   highland([
       parts[0],
