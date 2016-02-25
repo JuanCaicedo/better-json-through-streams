@@ -3,6 +3,8 @@ var oboe = require('oboe');
 var fs = require('fs');
 var path = require('path');
 var request = require('request');
+var highland = require('highland');
+var _ = require('lodash');
 
 var router = express.Router();
 
@@ -18,9 +20,25 @@ router.get('/home', function(req, res) {
 });
 
 router.get('/data', function(req, res) {
-  var filePath = path.resolve(__dirname, '../points.json');
-  var readStream = fs.createReadStream(filePath);
-  readStream.pipe(res);
+  var response = {
+    exif: {
+      software: 'http://make8bitart.com',
+      dateTime: '2015-11-07T15:35:13.415Z',
+      dateTimeOriginal: '2015-11-07T00:24:05.776Z'
+    },
+    pixif: {
+      pixels: '#{pixels}'
+    },
+    end: 'test'
+  };
+
+  var json = JSON.stringify(response);
+  var parts = json.split('#{pixels}');
+
+  highland(parts)
+    .invoke('split', [''])
+    .sequence()
+    .pipe(res);
 });
 
 module.exports = router;
