@@ -13,12 +13,16 @@ oboe('http://localhost:3000/data')
   .node('{x y color}', function(point) {
     var grid = document.querySelector('.grid');
     var cell = getCell(grid, point.x, point.y);
-    cell.classList.add(point.color);
+    if (cell) {
+      cell.classList.add(point.color);
+    } else {
+      console.log (point.x, point.y);
+    }
   })
   .done(function(){
     var element = document.querySelector('#status-message');
     element.textContent = 'All data Loaded!';
   })
   .fail(function(err) {
-    console.log('failed because', err);
+    // console.log('failed because', err);
   });
