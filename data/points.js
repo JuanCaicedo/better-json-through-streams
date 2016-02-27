@@ -23,8 +23,8 @@ function getStream() {
   var catStream = getPointStream(catPath);
   var sunStream = getPointStream(sunPath);
   return highland([
-    sunStream,
-    catStream
+    catStream,
+    sunStream
   ]).merge();
 }
 
