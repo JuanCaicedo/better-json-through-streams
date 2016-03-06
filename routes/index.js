@@ -37,8 +37,8 @@ router.get('/data', function(req, res) {
   var json = JSON.stringify(response);
   var parts = json.split('"#{pixels}"');
 
-  var pointStream = points.getStream()
-        .map(point => JSON.stringify(point))
+  var pointStream = points.getDataStream()
+        .map(JSON.stringify)
         .intersperse(',');
 
   highland([

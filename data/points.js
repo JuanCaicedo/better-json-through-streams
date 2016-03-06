@@ -3,10 +3,9 @@ var oboe = require('oboe');
 var fs = require('fs');
 var path = require('path');
 
-function getPointStream(filePath) {
+function getPointStream(sourceStream) {
   return highland(function(push, next) {
-    var fileStream = fs.createReadStream(filePath);
-    oboe(fileStream)
+    oboe(sourceStream)
       .node('{x y color}', function(point) {
         push(null, point);
       })
@@ -16,12 +15,15 @@ function getPointStream(filePath) {
   });
 }
 
-function getStream() {
+function getDataStream() {
   var catPath = path.resolve(__dirname, './cat-points.json');
-  var sunPath = path.resolve(__dirname, './sun-points.json');
+  var catSource = fs.createReadStream(catPath);
+  var catStream = getPointStream(catSource);
 
-  var catStream = getPointStream(catPath);
-  var sunStream = getPointStream(sunPath);
+  var sunPath = path.resolve(__dirname, './sun-points.json');
+  var sunSource = fs.createReadStream(sunPath);
+  var sunStream = getPointStream(sunSource);
+
   return highland([
     catStream,
     sunStream
@@ -30,5 +32,5 @@ function getStream() {
 
 
 module.exports = {
-  getStream: getStream
+  getDataStream: getDataStream
 };
