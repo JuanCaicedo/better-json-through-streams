@@ -2,6 +2,7 @@ var highland = require('highland');
 var oboe = require('oboe');
 var fs = require('fs');
 var path = require('path');
+var request = require('request');
 
 function getPointStream(sourceStream) {
   return highland(function(push, next) {
@@ -20,8 +21,8 @@ function getDataStream() {
   var catSource = fs.createReadStream(catPath);
   var catStream = getPointStream(catSource);
 
-  var sunPath = path.resolve(__dirname, './sun-points.json');
-  var sunSource = fs.createReadStream(sunPath);
+  var sunUrl = 'https://raw.githubusercontent.com/JuanCaicedo/better-json-through-streams/master/data/sun-points.json';
+  var sunSource = request(sunUrl);
   var sunStream = getPointStream(sunSource);
 
   return highland([
