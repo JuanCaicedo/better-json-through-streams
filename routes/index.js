@@ -62,4 +62,14 @@ router.get('/data-fs-async', function(req, res) {
   });
 });
 
+router.get('/fs-read-stream', function(req, res) {
+  res.render('fs-read-stream');
+});
+
+router.get('/data-fs-read-stream', function(req, res) {
+  var catPath = path.join(__dirname, '../data/cat-points.json');
+  var pointStream = fs.createReadStream(catPath);
+  pointStream.pipe(res);
+});
+
 module.exports = router;
