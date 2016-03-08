@@ -12,13 +12,21 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res) {
-  res.render('index', {
-    title: 'Express'
+  res.render('home', {
+    script: 'data.js'
   });
 });
 
 router.get('/home', function(req, res) {
-  res.render('home');
+  res.render('home', {
+    script: 'data.js'
+  });
+});
+
+router.get('/multiple-streams', function(req, res) {
+  res.render('home', {
+    script: 'data.js'
+  });
 });
 
 router.get('/data', function(req, res) {
@@ -52,7 +60,9 @@ router.get('/data', function(req, res) {
 });
 
 router.get('/fs-async', function(req, res) {
-  res.render('fs-async');
+  res.render('home', {
+    script: 'data-fs-async.js'
+  });
 });
 
 router.get('/data-fs-async', function(req, res) {
@@ -63,7 +73,9 @@ router.get('/data-fs-async', function(req, res) {
 });
 
 router.get('/fs-read-stream', function(req, res) {
-  res.render('fs-read-stream');
+  res.render('home', {
+    script: 'data-fs-read-stream.js'
+  });
 });
 
 router.get('/data-fs-read-stream', function(req, res) {
