@@ -84,4 +84,24 @@ router.get('/data-fs-read-stream', function(req, res) {
   pointStream.pipe(res);
 });
 
+router.get('/step-1', function(req, res) {
+  res.render('home', {
+    script: 'data-step-1.js'
+  });
+});
+
+router.get('/data-step-1', function(req, res) {
+  var points = [{
+    x: 1,
+    y: 2,
+    color: 'orange'
+  }, {
+    x: 2,
+    y: 2,
+    color: 'blue'
+  }];
+
+  res.send(points);
+});
+
 module.exports = router;
