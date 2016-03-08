@@ -51,4 +51,15 @@ router.get('/data', function(req, res) {
     .pipe(res);
 });
 
+router.get('/fs-async', function(req, res) {
+  res.render('fs-async');
+});
+
+router.get('/data-fs-async', function(req, res) {
+  var catPath = path.join(__dirname, '../data/cat-points.json');
+  fs.readFile(catPath, function(err, data){
+    res.send(data);
+  });
+});
+
 module.exports = router;
