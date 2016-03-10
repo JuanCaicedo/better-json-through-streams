@@ -19,17 +19,17 @@ router.get('/', function(req, res) {
 
 router.get('/home', function(req, res) {
   res.render('home', {
-    script: 'data.js'
+    script: 'data-step-7.js'
   });
 });
 
-router.get('/multiple-streams', function(req, res) {
+router.get('/step-7', function(req, res) {
   res.render('home', {
-    script: 'data.js'
+    script: 'data-step-7.js'
   });
 });
 
-router.get('/data', function(req, res) {
+router.get('/data-step-7', function(req, res) {
   var response = {
     exif: {
       software: 'http://make8bitart.com',
@@ -39,7 +39,7 @@ router.get('/data', function(req, res) {
     pixif: {
       pixels: ["#{pixels}"]
     },
-    end: 'test'
+    madeBy: 'Juan Caicedo'
   };
 
   var json = JSON.stringify(response);
