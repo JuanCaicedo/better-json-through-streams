@@ -26,9 +26,10 @@ function getDataStream() {
   var sunStream = getPointStream(sunSource);
 
   return highland([
-    catStream,
-    sunStream
-  ]).merge();
+      catStream,
+      sunStream
+    ])
+    .merge();
 }
 
 function getStaticPointStream() {
@@ -45,7 +46,28 @@ function getStaticPointStream() {
   return highland(points);
 }
 
+function getStaticMergedStream() {
+  var stream1 = highland([{
+    x: 1,
+    y: 2,
+    color: 'orange'
+  }]);
+
+  var stream2 = highland([{
+    x: 2,
+    y: 2,
+    color: 'blue'
+  }]);
+
+  return highland([
+      stream1,
+      stream2
+    ])
+    .merge();
+}
+
 module.exports = {
   getDataStream: getDataStream,
-  getStaticPointStream: getStaticPointStream
+  getStaticPointStream: getStaticPointStream,
+  getStaticMergedStream: getStaticMergedStream
 };
