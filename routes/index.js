@@ -173,4 +173,25 @@ router.get('/data-step-5', function(req, res) {
     .pipe(res);
 });
 
+router.get('/step-6', function(req, res) {
+  res.render('home', {
+    script: 'data-step-6.js'
+  });
+});
+
+router.get('/data-step-6', function(req, res) {
+  var pointStream = points.getDataStream()
+        .map(JSON.stringify)
+        .intersperse(',');
+
+  highland([
+      '[',
+      pointStream,
+      ']'
+    ])
+    .invoke('split', [''])
+    .sequence()
+    .pipe(res);
+});
+
 module.exports = router;
