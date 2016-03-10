@@ -31,7 +31,21 @@ function getDataStream() {
   ]).merge();
 }
 
+function getStaticPointStream() {
+  var points = [{
+    x: 1,
+    y: 2,
+    color: 'orange'
+  }, {
+    x: 2,
+    y: 2,
+    color: 'blue'
+  }];
+
+  return highland(points);
+}
 
 module.exports = {
-  getDataStream: getDataStream
+  getDataStream: getDataStream,
+  getStaticPointStream: getStaticPointStream
 };

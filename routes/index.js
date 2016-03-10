@@ -122,4 +122,19 @@ router.get('/data-step-2', function(req, res) {
     .pipe(res);
 });
 
+router.get('/data-step-3', function(req, res) {
+  var pointStream = points.getStaticPointStream()
+        .map(JSON.stringify)
+        .intersperse(',');
+
+  highland([
+      '[',
+      pointStream,
+      ']'
+    ])
+    .invoke('split', [''])
+    .sequence()
+    .pipe(res);
+});
+
 module.exports = router;
