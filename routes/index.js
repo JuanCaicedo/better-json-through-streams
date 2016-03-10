@@ -45,7 +45,7 @@ router.get('/data', function(req, res) {
   var json = JSON.stringify(response);
   var parts = json.split('"#{pixels}"');
 
-  var pointStream = points.getDataStream()
+  var pointStream = points.getFullStream()
         .map(JSON.stringify)
         .intersperse(',');
 
@@ -180,7 +180,7 @@ router.get('/step-6', function(req, res) {
 });
 
 router.get('/data-step-6', function(req, res) {
-  var pointStream = points.getDataStream()
+  var pointStream = points.getFullStream()
         .map(JSON.stringify)
         .intersperse(',');
 

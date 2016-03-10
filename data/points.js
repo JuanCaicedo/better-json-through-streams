@@ -16,7 +16,7 @@ function getPointStream(sourceStream) {
   });
 }
 
-function getDataStream() {
+function getFullStream() {
   var catPath = path.resolve(__dirname, './cat-points.json');
   var catSource = fs.createReadStream(catPath);
   var catStream = getPointStream(catSource);
@@ -86,7 +86,7 @@ function getStreamWithCat() {
 }
 
 module.exports = {
-  getDataStream: getDataStream,
+  getFullStream: getFullStream,
   getStaticPointStream: getStaticPointStream,
   getStaticMergedStream: getStaticMergedStream,
   getStreamWithCat: getStreamWithCat
