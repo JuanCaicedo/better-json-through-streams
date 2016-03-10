@@ -66,8 +66,28 @@ function getStaticMergedStream() {
     .merge();
 }
 
+function getStreamWithCat() {
+
+  var catPath = path.resolve(__dirname, './cat-points.json');
+  var catSource = fs.createReadStream(catPath);
+  var catStream = getPointStream(catSource);
+
+  var stream2 = highland([{
+    x: 2,
+    y: 2,
+    color: 'blue'
+  }]);
+
+  return highland([
+      catStream,
+      stream2
+    ])
+    .merge();
+}
+
 module.exports = {
   getDataStream: getDataStream,
   getStaticPointStream: getStaticPointStream,
-  getStaticMergedStream: getStaticMergedStream
+  getStaticMergedStream: getStaticMergedStream,
+  getStreamWithCat: getStreamWithCat
 };
