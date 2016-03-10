@@ -34,13 +34,13 @@ function getFullStream() {
 
 function getStaticPointStream() {
   var points = [{
-    x: 1,
-    y: 2,
-    color: 'orange'
-  }, {
-    x: 2,
-    y: 2,
+    x: 23,
+    y: 0,
     color: 'blue'
+  }, {
+    x: 22,
+    y: 1,
+    color: 'black'
   }];
 
   return highland(points);
@@ -48,15 +48,15 @@ function getStaticPointStream() {
 
 function getStaticMergedStream() {
   var stream1 = highland([{
-    x: 1,
-    y: 2,
-    color: 'orange'
+    x: 23,
+    y: 0,
+    color: 'blue'
   }]);
 
   var stream2 = highland([{
-    x: 2,
-    y: 2,
-    color: 'blue'
+    x: 22,
+    y: 1,
+    color: 'black'
   }]);
 
   return highland([
@@ -73,9 +73,9 @@ function getStreamWithCat() {
   var catStream = getPointStream(catSource);
 
   var stream2 = highland([{
-    x: 2,
-    y: 2,
-    color: 'blue'
+    x: 22,
+    y: 1,
+    color: 'black'
   }]);
 
   return highland([

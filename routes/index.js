@@ -92,13 +92,13 @@ router.get('/step-1', function(req, res) {
 
 router.get('/data-step-1', function(req, res) {
   var points = [{
-    x: 1,
-    y: 2,
-    color: 'orange'
-  }, {
-    x: 2,
-    y: 2,
+    x: 23,
+    y: 0,
     color: 'blue'
+  }, {
+    x: 22,
+    y: 1,
+    color: 'black'
   }];
 
   res.send(points);
@@ -106,13 +106,13 @@ router.get('/data-step-1', function(req, res) {
 
 router.get('/data-step-2', function(req, res) {
   var points = [{
-    x: 1,
-    y: 2,
-    color: 'orange'
-  }, {
-    x: 2,
-    y: 2,
+    x: 23,
+    y: 0,
     color: 'blue'
+  }, {
+    x: 22,
+    y: 1,
+    color: 'black'
   }];
 
   var json = JSON.stringify(points);
