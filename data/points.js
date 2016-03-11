@@ -26,7 +26,6 @@ function getFullStreamLocal() {
   var catSource = fs.createReadStream(catPath);
   var catStream = getPointStream(catSource);
 
-  console.log('points local');
   var sunUrl = 'http://localhost:3000/sun-local';
   var sunSource = request(sunUrl);
   var sunStream = getPointStream(sunSource);
