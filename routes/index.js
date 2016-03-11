@@ -194,4 +194,31 @@ router.get('/data-step-6', function(req, res) {
     .pipe(res);
 });
 
+router.get('/step-6-local', function(req, res) {
+  res.render('home', {
+    script: 'data-step-6-local.js'
+  });
+});
+
+router.get('/data-step-6-local', function(req, res) {
+  var pointStream = points.getFullStreamLocal()
+        .map(JSON.stringify)
+        .intersperse(',');
+
+  highland([
+    '[',
+    pointStream,
+    ']'
+  ])
+    .invoke('split', [''])
+    .sequence()
+    .pipe(res);
+});
+
+router.get('/sun-local', function (req, res) {
+  var sunPath = path.resolve(__dirname, '../data/sun-points.json');
+  fs.createReadStream(sunPath)
+    .pipe(res);
+});
+
 module.exports = router;

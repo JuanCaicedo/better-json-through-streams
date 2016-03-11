@@ -21,6 +21,24 @@ function getPointStream(sourceStream) {
 
 }
 
+function getFullStreamLocal() {
+  var catPath = path.resolve(__dirname, './cat-points.json');
+  var catSource = fs.createReadStream(catPath);
+  var catStream = getPointStream(catSource);
+
+  console.log('points local');
+  var sunUrl = 'http://localhost:3000/sun-local';
+  var sunSource = request(sunUrl);
+  var sunStream = getPointStream(sunSource);
+
+  return highland([
+      catStream,
+      sunStream
+    ])
+    .merge();
+}
+
+
 function getFullStream() {
   var catPath = path.resolve(__dirname, './cat-points.json');
   var catSource = fs.createReadStream(catPath);
@@ -91,6 +109,7 @@ function getStreamWithCat() {
 }
 
 module.exports = {
+  getFullStreamLocal: getFullStreamLocal,
   getFullStream: getFullStream,
   getStaticPointStream: getStaticPointStream,
   getStaticMergedStream: getStaticMergedStream,
