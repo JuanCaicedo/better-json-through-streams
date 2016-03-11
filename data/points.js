@@ -6,6 +6,10 @@ var request = require('request');
 
 function getPointStream(sourceStream) {
   return highland(function(push, next) {
+    sourceStream.on('error', function(err) {
+      push(null, highland.nil);
+    });
+
     oboe(sourceStream)
       .node('{x y color}', function(point) {
         push(null, point);
@@ -14,6 +18,7 @@ function getPointStream(sourceStream) {
         push(null, highland.nil);
       });
   });
+
 }
 
 function getFullStream() {
