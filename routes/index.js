@@ -13,23 +13,17 @@ var router = express.Router();
 /* GET home page. */
 router.get('/', function(req, res) {
   res.render('home', {
-    script: 'data-step-7.js'
+    script: 'data-full.js'
   });
 });
 
 router.get('/home', function(req, res) {
   res.render('home', {
-    script: 'data-step-7.js'
+    script: 'data-full.js'
   });
 });
 
-router.get('/step-7', function(req, res) {
-  res.render('home', {
-    script: 'data-step-7.js'
-  });
-});
-
-router.get('/data-step-7', function(req, res) {
+router.get('/full-data', function(req, res) {
   var response = {
     exif: {
       software: 'http://make8bitart.com',
@@ -82,116 +76,6 @@ router.get('/data-fs-read-stream', function(req, res) {
   var catPath = path.join(__dirname, '../data/cat-points.json');
   var pointStream = fs.createReadStream(catPath);
   pointStream.pipe(res);
-});
-
-router.get('/step-1', function(req, res) {
-  res.render('home', {
-    script: 'data-step-1.js'
-  });
-});
-
-router.get('/data-step-1', function(req, res) {
-  var points = [{
-    x: 23,
-    y: 0,
-    color: 'blue'
-  }, {
-    x: 22,
-    y: 1,
-    color: 'black'
-  }];
-
-  res.send(points);
-});
-
-router.get('/data-step-2', function(req, res) {
-  var points = [{
-    x: 23,
-    y: 0,
-    color: 'blue'
-  }, {
-    x: 22,
-    y: 1,
-    color: 'black'
-  }];
-
-  var json = JSON.stringify(points);
-  var chars = json.split('');
-
-  highland(chars)
-    .pipe(res);
-});
-
-router.get('/data-step-3', function(req, res) {
-  var pointStream = points.getStaticPointStream()
-        .map(JSON.stringify)
-        .intersperse(',');
-
-  highland([
-      '[',
-      pointStream,
-      ']'
-    ])
-    .invoke('split', [''])
-    .sequence()
-    .pipe(res);
-});
-
-router.get('/data-step-4', function(req, res) {
-  var pointStream = points.getStaticMergedStream()
-        .map(JSON.stringify)
-        .intersperse(',');
-
-  highland([
-      '[',
-      pointStream,
-      ']'
-    ])
-    .invoke('split', [''])
-    .sequence()
-    .pipe(res);
-});
-
-router.get('/step-5', function(req, res) {
-  res.render('home', {
-    script: 'data-step-5.js'
-  });
-});
-
-router.get('/data-step-5', function(req, res) {
-  var pointStream = points.getStreamWithCat()
-        .map(JSON.stringify)
-        .intersperse(',');
-
-  highland([
-    '[',
-    pointStream,
-    ']'
-  ])
-    .invoke('split', [''])
-    .sequence()
-    .pipe(res);
-});
-
-router.get('/step-6', function(req, res) {
-  res.render('home', {
-    script: 'data-step-6.js'
-  });
-});
-
-router.get('/data-step-6', function(req, res) {
-  var pointStream = points.getFullStream()
-        .map(JSON.stringify)
-        .intersperse(',');
-
-  highland([
-      '[',
-      pointStream,
-      ']'
-    ])
-    .invoke('split', [''])
-    .sequence()
-    .pipe(res);
 });
 
 module.exports = router;
