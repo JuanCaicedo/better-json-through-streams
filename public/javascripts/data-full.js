@@ -9,7 +9,7 @@ function getCell(container, x, y) {
   return cell;
 }
 
-oboe('http://localhost:3000/full-data')
+oboe('https://oboe-demo.herokuapp.com/full-data')
   .node('{x y color}', function(point) {
     var grid = document.querySelector('.grid');
     var cell = getCell(grid, point.x, point.y);
